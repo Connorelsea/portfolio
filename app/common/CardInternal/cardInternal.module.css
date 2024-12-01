@@ -1,0 +1,6 @@
+.cardInternal {
+  display: flex;
+  justify-content: center;
+  perspective: 500px;
+  perspective-origin: 45% 30%;
+}

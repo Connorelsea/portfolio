@@ -1,0 +1,38 @@
+.pill {
+  background-color: #87a5ff;
+  border: 1px solid #d9e2ff;
+  border-radius: 30px;
+  padding: 10px 20px;
+  color: #3452bc;
+  font-size: 25px;
+  position: absolute;
+  background: linear-gradient(to bottom right, #dae2ff, #f1f5ff, #dae2ff);
+  box-sizing: border-box;
+  transition: scale 0.3s ease-in-out;
+
+  &:hover {
+    scale: 1.2;
+  }
+}
+
+.pillText {
+  position: relative;
+  padding-bottom: 6px;
+  text-wrap: nowrap;
+}
+
+.pillText::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #cbd6ff 0%, #6587ff 40%, #284ed9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow:
+    0px 2px 2px rgba(52, 82, 188, 0.4),
+    /* outer shadow */ 0px -1.4px 1px rgba(255, 255, 255, 0.1); /* subtle white inner glow at top */
+}

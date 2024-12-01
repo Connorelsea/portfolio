@@ -1,0 +1,42 @@
+.card {
+  border-radius: 25px;
+  box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
+  width: var(--width);
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+  perspective: 500px;
+  perspective-origin: 45% 30%;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+}
+
+.card-overflow-hidden {
+  overflow: hidden;
+}
+
+.card-color-blank {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.card-color-dark {
+  background-color: #3d3d3d;
+  border: 1px solid #000;
+  box-shadow:
+    0 10px 30px 0 rgba(40, 200, 64, 0.4),
+    0 4px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card-color-deep-blue {
+  background-color: #92adff;
+  border: 1px solid #919dc8;
+  box-shadow:
+    0 10px 30px 0 #d9dafe,
+    0 4px 10px 0 rgba(0, 0, 0, 0.3);
+}
