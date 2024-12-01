@@ -4,7 +4,7 @@ import CodeEditor from "./sections/CodeEditor";
 
 import { Rubik } from "next/font/google";
 
-export const rubik = Rubik({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin"] });
 
 export default function Home() {
   return (

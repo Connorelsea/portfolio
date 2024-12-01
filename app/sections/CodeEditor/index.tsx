@@ -3,7 +3,6 @@
 import React from "react";
 import Card, { CardColor } from "@/app/common/Card";
 import FlexRow from "@/app/common/FlexRow";
-import CardInternal from "@/app/common/CardInternal";
 import { motion } from "framer-motion";
 import { useLoadTracker } from "@/app/hooks/useLoadTracker";
 

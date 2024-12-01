@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./pill.module.css";
 import { motion } from "framer-motion";
 import { useRef } from "react";
@@ -74,11 +74,7 @@ const Pill = ({
         </p>
       </motion.div>
 
-      <Popup
-        isVisible={isHovered}
-        content={<div>{content[title]}</div>}
-        parentRef={pillRef}
-      />
+      <Popup isVisible={isHovered} content={<div>{content[title]}</div>} />
     </>
   );
 };

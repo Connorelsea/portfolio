@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./button.module.css";
-import { rubik } from "@/app/page";
-
+import { Rubik } from "next/font/google";
 export interface ButtonProps {
   children: React.ReactNode;
   text: string;
   isSelected?: boolean;
   onClick?: () => void;
 }
+
+const rubik = Rubik({ subsets: ["latin"] });
 
 const Button = ({ children, text, isSelected, onClick }: ButtonProps) => {
   const styleVariables = {

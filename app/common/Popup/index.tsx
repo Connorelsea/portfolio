@@ -2,23 +2,18 @@ import { useEffect, useState, useRef } from "react";
 import styles from "./popup.module.css";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { rubik } from "@/app/page";
+import { Rubik } from "next/font/google";
 
 interface PopupProps {
   isVisible: boolean;
   content: React.ReactNode;
-  parentRef: React.RefObject<HTMLElement>;
 }
 
-const Popup = ({ isVisible, content, parentRef }: PopupProps) => {
+const rubik = Rubik({ subsets: ["latin"] });
+
+const Popup = ({ isVisible, content }: PopupProps) => {
   const [position, setPosition] = useState({ top: 0, left: 0 });
   const popupRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
-  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
