@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { motion } from "framer-motion";
 import Button from "@/app/common/Button";
 import styles from "./about.module.css";
 import { useLoadTracker } from "@/app/hooks/useLoadTracker";
 
-const AboutArea = () => {
+export interface AboutAreaProps {
+  selectedButton: string;
+  setSelectedButton: (button: string) => void;
+}
+
+const AboutArea = ({ selectedButton, setSelectedButton }: AboutAreaProps) => {
   const { isLoaded, incrementImageCount } = useLoadTracker({ imageCount: 1 });
-  const [selectedButton, setSelectedButton] = useState<string>("About Me");
 
   return (
     <>
@@ -75,4 +79,4 @@ const AboutArea = () => {
   );
 };
 
-export default AboutArea;
+export default memo(AboutArea);

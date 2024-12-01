@@ -6,7 +6,8 @@ const PillArea = () => {
   const { isLoaded, incrementImageCount } = useLoadTracker({ imageCount: 1 });
 
   return (
-    <div
+    <motion.div
+      key="pill-area-container"
       style={{
         position: "relative",
         width: "100%",
@@ -111,14 +112,15 @@ const PillArea = () => {
       />
 
       <motion.img
+        key="pill-area-background"
         draggable={false}
-        src="https://utfs.io/f/IJo7F0AX1AKDVXxCD2gHP29W0tKlODXNkq61JFIewL8courz"
-        height={900}
+        src="https://utfs.io/f/IJo7F0AX1AKDvNYF2YhQOqZ0fAEJpMV2ewkuxB1U8GhRbltr"
+        height={500}
         onLoad={incrementImageCount}
         style={{
           position: "absolute",
-          top: -190,
-          left: -160,
+          top: 0,
+          left: 50,
           zIndex: 1500,
         }}
         initial={{
@@ -133,9 +135,15 @@ const PillArea = () => {
             filter: "blur(0px)",
           }
         }
+        exit={{
+          opacity: 0,
+          transform: "scale(0.4)",
+          filter: "blur(20px)",
+          transition: { duration: 0.3 },
+        }}
         transition={{ duration: 3 }}
       />
-    </div>
+    </motion.div>
   );
 };
 

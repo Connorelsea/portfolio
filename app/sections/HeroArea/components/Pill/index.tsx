@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import styles from "./pill.module.css";
 import { motion } from "framer-motion";
-import { useRef } from "react";
 import Popup from "@/app/common/Popup";
 
 import content from "@/app/common/Popup/content";
@@ -26,19 +25,17 @@ const Pill = ({
   const newTop = startTop + moveTop;
   const newRight = startRight + moveRight;
   const [isHovered, setIsHovered] = useState(false);
-  const pillRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
       <motion.div
-        ref={pillRef}
         onHoverStart={() => {
           setIsHovered(true);
         }}
         onHoverEnd={() => {
           setIsHovered(false);
         }}
-        key={title}
+        key={"pill-" + title}
         className={styles.pill}
         style={{
           zIndex: 9000 - order,
@@ -62,6 +59,21 @@ const Pill = ({
           rotateX: 0,
           rotateY: 0,
         }}
+        exit={{
+          opacity: 0,
+          top: startTop,
+          right: startRight - 50,
+          scale: 0.8,
+          filter: "blur(20px)",
+          rotateX: 100,
+          rotateY: 20,
+          transition: {
+            stiffness: 100,
+            mass: 1,
+            type: "spring",
+            delay: 0.08 * order,
+          },
+        }}
         transition={{
           stiffness: 70,
           mass: 2,
@@ -79,4 +91,4 @@ const Pill = ({
   );
 };
 
-export default Pill;
+export default memo(Pill);

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, memo } from "react";
 import styles from "./popup.module.css";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -99,4 +99,4 @@ const Popup = ({ isVisible, content }: PopupProps) => {
   );
 };
 
-export default Popup;
+export default memo(Popup);

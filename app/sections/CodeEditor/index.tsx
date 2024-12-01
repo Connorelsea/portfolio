@@ -2,9 +2,9 @@
 
 import React from "react";
 import Card, { CardColor } from "@/app/common/Card";
-import FlexRow from "@/app/common/FlexRow";
 import { motion } from "framer-motion";
 import { useLoadTracker } from "@/app/hooks/useLoadTracker";
+import FlexRow from "@/app/common/FlexRow";
 
 const CodeEditor = () => {
   const { isLoaded, incrementImageCount } = useLoadTracker({ imageCount: 6 });

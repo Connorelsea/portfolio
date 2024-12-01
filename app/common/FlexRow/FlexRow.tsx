@@ -75,9 +75,9 @@ const FlexRow: React.FC<FlexRowProps> = ({ children, height }) => {
     <div
       className={styles["flex-row"]}
       style={{
-        height: calculatedHeight,
-        transform: `scale(${scale})`,
-        transformOrigin: "top",
+        // height: calculatedHeight,
+        // transform: `scale(${scale})`,
+        // transformOrigin: "top",
         ...styleVariables,
       }}
     >
