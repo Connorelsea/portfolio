@@ -1,8 +1,6 @@
-import { memo, useState } from "react";
-import { motion } from "framer-motion";
+import { memo } from "react";
 import Button from "@/app/common/Button";
 import styles from "./about.module.css";
-import { useLoadTracker } from "@/app/hooks/useLoadTracker";
 
 export interface AboutAreaProps {
   selectedButton: string;

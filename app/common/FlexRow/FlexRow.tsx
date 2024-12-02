@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import styles from "./flexRow.module.css";
 import { useMediaQuery } from "react-responsive";
-import { DESKTOP_WIDTH, GAP, MOBILE_WIDTH } from "../constants";
+import { DESKTOP_WIDTH, MOBILE_WIDTH } from "../constants";
 
 export interface FlexRowProps {
   children: React.ReactNode;
-  height: number;
 }
 
-const FlexRow: React.FC<FlexRowProps> = ({ children, height }) => {
+const FlexRow: React.FC<FlexRowProps> = ({ children }) => {
   const isDesktopOrLaptop = useMediaQuery({
     query: `(min-width: ${DESKTOP_WIDTH}px)`,
   });

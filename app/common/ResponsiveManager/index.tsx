@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { DESKTOP_WIDTH } from "../constants";
 
@@ -31,6 +31,9 @@ const ResponsiveManager = ({ children }: ResponsiveManagerProps) => {
   const [screenSize, setScreenSize] = useState(DESKTOP_WIDTH);
 
   useEffect(() => {
+    setTimeout(() => {
+      setScreenSize(window.innerWidth);
+    }, 10);
     window.addEventListener("resize", () => {
       setScreenSize(window.innerWidth);
     });
@@ -46,11 +49,11 @@ const ResponsiveManager = ({ children }: ResponsiveManagerProps) => {
       return 1;
     }
     let calculatedWidth = DESKTOP_WIDTH;
-    if (isMobile) calculatedWidth = WIDTH_TABLET + 40;
+    if (isMobile) calculatedWidth = WIDTH_TABLET + TOTAL_X_PADDING;
     const scale = screenSize / calculatedWidth;
     console.log("FOUND SCALE", scale);
     return scale;
-  }, [isDesktop, isTablet, isMobile, screenSize]);
+  }, [isDesktop, isMobile, screenSize]);
 
   // const width = useMemo(() => {
   //   if (isDesktop) {

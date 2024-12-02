@@ -51,7 +51,7 @@ const Card: React.FC<CardProps> = ({
     "--gap": `${gap}px`,
   } as React.CSSProperties;
 
-  let adjustedOrder = order >= 4 ? order + 3 : order;
+  const adjustedOrder = order >= 4 ? order + 3 : order;
 
   return (
     <motion.div
