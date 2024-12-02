@@ -1,21 +1,59 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card, { CardColor } from "@/app/common/Card";
 import { motion } from "framer-motion";
-import { useLoadTracker } from "@/app/hooks/useLoadTracker";
 import FlexRow from "@/app/common/FlexRow";
+import { useLoadTrackerWithUrls } from "@/app/hooks/useLoadTracker";
 
 const CodeEditor = () => {
-  const { isLoaded, incrementImageCount } = useLoadTracker({ imageCount: 6 });
+  const { isLoaded, getImageRef, handleImageLoad } = useLoadTrackerWithUrls({
+    urls: [
+      "https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ",
+      "https://utfs.io/f/IJo7F0AX1AKDkEYyz7ACKMU57T2bzdQjH90iAqIhGSJsPDcu",
+      "https://utfs.io/f/IJo7F0AX1AKDLLANUQpE1IPvUkeXAxl2Qz60ZimGft4VKFwT",
+      "https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ",
+      "https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ",
+      "https://utfs.io/f/IJo7F0AX1AKDLLANUQpE1IPvUkeXAxl2Qz60ZimGft4VKFwT",
+    ],
+  });
+
+  const [isFirstCardHovered, setIsFirstCardHovered] = useState(false);
+  const [isSecondCardHovered, setIsSecondCardHovered] = useState(false);
+
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    // ensure that first load of image (which is a bit after mounting) has the main extra delay
+    // the extra delay is added to allow for attention on the first row animations
+    setTimeout(() => {
+      setHasMounted(true);
+    }, 1000);
+  }, []);
+
+  const extraDelay = hasMounted ? 0 : 3;
 
   return (
-    <FlexRow height={390}>
-      <Card color={CardColor.DARK} width={40} order={2}>
+    <FlexRow>
+      <Card
+        color={CardColor.DARK}
+        width={40}
+        order={4}
+        height={390}
+        onMouseEnter={() => {
+          console.log("HOVERING");
+          setIsFirstCardHovered(true);
+        }}
+        onMouseLeave={() => {
+          console.log("LEAVING");
+          setIsFirstCardHovered(false);
+        }}
+      >
         <motion.img
           draggable={false}
           src="https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ"
           alt="Code Editor"
+          ref={getImageRef(0)}
           height={350}
           style={{
             position: "absolute",
@@ -23,7 +61,7 @@ const CodeEditor = () => {
             left: "25px",
             zIndex: 1001,
           }}
-          onLoad={incrementImageCount}
+          onLoad={handleImageLoad}
           initial={{
             opacity: 0,
             scale: 1,
@@ -34,13 +72,15 @@ const CodeEditor = () => {
               scale: 1.5,
             }
           }
-          transition={{ duration: 1.4, delay: 2.2 }}
+          transition={{ duration: 1.4, delay: 2.2 + extraDelay }}
         />
         <motion.img
+          key="first-card-code-editor"
           draggable={false}
           src="https://utfs.io/f/IJo7F0AX1AKDkEYyz7ACKMU57T2bzdQjH90iAqIhGSJsPDcu"
           height={350}
-          onLoad={incrementImageCount}
+          ref={getImageRef(1)}
+          onLoad={handleImageLoad}
           style={{
             position: "absolute",
             top: "25px",
@@ -49,32 +89,49 @@ const CodeEditor = () => {
           }}
           initial={{
             opacity: 0,
-            transform: "scale(0.4) rotateX(30deg) rotateY(20deg)",
+            scale: 0.4,
+            rotateX: 30,
+            rotateY: 20,
             filter: "blur(20px)",
           }}
-          animate={
-            isLoaded && {
-              opacity: 1,
-              transform: "scale(1) rotateX(0deg) rotateY(0deg)",
-              filter: "blur(0px)",
-            }
-          }
-          transition={{ duration: 2 }}
+          animate={{
+            opacity: 1,
+            scale: isFirstCardHovered ? 0.9 : 1,
+            rotateX: isFirstCardHovered ? 10 : 0,
+            rotateY: isFirstCardHovered ? -12 : 0,
+            filter: "blur(0px)",
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            mass: hasMounted ? 1 : 2,
+            damping: hasMounted ? 7 : 20,
+            duration: isFirstCardHovered ? 0.4 : 2,
+            delay: isFirstCardHovered ? 0 : extraDelay,
+          }}
         />
       </Card>
-      <Card color={CardColor.DARK} width={60} order={4}>
+      <Card
+        color={CardColor.DARK}
+        width={60}
+        order={5}
+        height={390}
+        onMouseEnter={() => setIsSecondCardHovered(true)}
+        onMouseLeave={() => setIsSecondCardHovered(false)}
+      >
         <motion.img
           draggable={false}
           src="https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ"
           alt="Code Editor"
           height={350}
+          ref={getImageRef(2)}
           style={{
             position: "absolute",
             top: "-75px",
             zIndex: 999,
             transform: "rotate(180deg)",
           }}
-          onLoad={incrementImageCount}
+          onLoad={handleImageLoad}
           initial={{
             opacity: 0,
           }}
@@ -83,7 +140,7 @@ const CodeEditor = () => {
               opacity: 1,
             }
           }
-          transition={{ duration: 1 }}
+          transition={{ duration: 1, delay: 0 + extraDelay }}
         />
 
         <motion.img
@@ -91,12 +148,13 @@ const CodeEditor = () => {
           src="https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ"
           alt="Code Editor"
           height={350}
+          ref={getImageRef(3)}
           style={{
             position: "absolute",
             bottom: "-35px",
             zIndex: 1001,
           }}
-          onLoad={incrementImageCount}
+          onLoad={handleImageLoad}
           initial={{
             opacity: 0,
           }}
@@ -105,19 +163,20 @@ const CodeEditor = () => {
               opacity: 1,
             }
           }
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.8, delay: 1 + extraDelay }}
         />
         <motion.img
           draggable={false}
           src="https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ"
           alt="Code Editor"
           height={350}
+          ref={getImageRef(4)}
           style={{
             position: "absolute",
             bottom: "-35px",
             zIndex: 1001,
           }}
-          onLoad={incrementImageCount}
+          onLoad={handleImageLoad}
           initial={{
             opacity: 0,
             scale: 1,
@@ -128,20 +187,22 @@ const CodeEditor = () => {
               scale: 1.5,
             }
           }
-          transition={{ duration: 1.4, delay: 2.2 }}
+          transition={{ duration: 1.4, delay: 2.2 + extraDelay }}
         />
         <motion.img
+          key="second-card-code-editor"
           draggable={false}
           src="https://utfs.io/f/IJo7F0AX1AKDLLANUQpE1IPvUkeXAxl2Qz60ZimGft4VKFwT"
           alt="Code Editor"
           height={500}
+          ref={getImageRef(5)}
           style={{
             position: "absolute",
             zIndex: 1000,
             transform: "rotateX(30deg)",
             willChange: "transform",
           }}
-          onLoad={incrementImageCount}
+          onLoad={handleImageLoad}
           initial={{
             rotateX: 30,
             opacity: 0,
@@ -152,13 +213,16 @@ const CodeEditor = () => {
           animate={
             isLoaded && {
               rotateX: 0,
+              rotateY: isSecondCardHovered ? -20 : 0,
+              x: isSecondCardHovered ? -200 : 0,
+              y: isSecondCardHovered ? 50 : 0,
               opacity: 1,
               filter: "blur(0px)",
-              scale: 0.76,
+              scale: isSecondCardHovered ? 1 : 0.76,
               bottom: "-60px",
             }
           }
-          transition={{ duration: 2 }}
+          transition={{ duration: 2, delay: 0 + extraDelay }}
         />
       </Card>
     </FlexRow>

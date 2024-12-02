@@ -2,13 +2,18 @@
   border-radius: 25px;
   box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.3);
   width: var(--width);
+  height: var(--height);
+  min-height: var(--height);
   display: flex;
+  flex-direction: var(--flex);
   position: relative;
   flex-grow: 1;
   perspective: 500px;
   perspective-origin: 45% 30%;
   display: flex;
   justify-content: center;
+  align-items: space-between;
+  gap: var(--gap);
 
   @media (max-width: 700px) {
     width: 100%;
@@ -39,4 +44,12 @@
   box-shadow:
     0 10px 30px 0 #d9dafe,
     0 4px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.card-color-orange {
+  background-color: #fef6f3;
+  border: 1px solid #efd1c5;
+  box-shadow:
+    0 10px 40px 0 #ffd9ca,
+    0 4px 3px 0 rgba(0, 0, 0, 0.1);
 }

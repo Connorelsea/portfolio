@@ -6,6 +6,7 @@ export enum CardColor {
   BLANK = "blank",
   DARK = "dark",
   DEEP_BLUE = "deep-blue",
+  ORANGE = "orange",
 }
 
 export interface CardProps {
@@ -14,6 +15,12 @@ export interface CardProps {
   width: number;
   overflow?: boolean;
   order?: number;
+  height?: number;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  flex?: "row" | "column";
+  gap?: number;
+  fullWidth?: boolean;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -22,6 +29,12 @@ const Card: React.FC<CardProps> = ({
   width,
   overflow = false,
   order = 1,
+  height,
+  flex = "row",
+  gap = 0,
+  onMouseEnter,
+  onMouseLeave,
+  fullWidth = false,
 }) => {
   const cardClasses = [
     styles.card,
@@ -29,7 +42,16 @@ const Card: React.FC<CardProps> = ({
     overflow ? "" : styles["card-overflow-hidden"],
   ].join(" ");
 
-  const styleVariables = { "--width": `${width}%` } as React.CSSProperties;
+  const adjustedWidth = fullWidth ? "100%" : `${width}%`;
+
+  const styleVariables = {
+    "--width": adjustedWidth,
+    "--height": `${height}px`,
+    "--flex": flex,
+    "--gap": `${gap}px`,
+  } as React.CSSProperties;
+
+  let adjustedOrder = order >= 4 ? order + 3 : order;
 
   return (
     <motion.div
@@ -49,8 +71,10 @@ const Card: React.FC<CardProps> = ({
         stiffness: 70,
         mass: 1,
         type: "spring",
-        delay: order * 0.3,
+        delay: adjustedOrder * 0.3,
       }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
     </motion.div>

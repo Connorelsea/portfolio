@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import Pill from "../Pill";
-import { useLoadTracker } from "@/app/hooks/useLoadTracker";
+import { useLoadTrackerWithUrls } from "@/app/hooks/useLoadTracker";
 
 const PillArea = () => {
-  const { isLoaded, incrementImageCount } = useLoadTracker({ imageCount: 1 });
+  const { isLoaded, getImageRef, handleImageLoad } = useLoadTrackerWithUrls({
+    urls: [
+      "https://utfs.io/f/IJo7F0AX1AKDvNYF2YhQOqZ0fAEJpMV2ewkuxB1U8GhRbltr",
+    ],
+  });
 
   return (
     <motion.div
@@ -116,7 +120,8 @@ const PillArea = () => {
         draggable={false}
         src="https://utfs.io/f/IJo7F0AX1AKDvNYF2YhQOqZ0fAEJpMV2ewkuxB1U8GhRbltr"
         height={500}
-        onLoad={incrementImageCount}
+        onLoad={handleImageLoad}
+        ref={getImageRef(0)}
         style={{
           position: "absolute",
           top: 0,
@@ -139,7 +144,7 @@ const PillArea = () => {
           opacity: 0,
           transform: "scale(0.4)",
           filter: "blur(20px)",
-          transition: { duration: 0.3 },
+          transition: { duration: 0.5 },
         }}
         transition={{ duration: 3 }}
       />

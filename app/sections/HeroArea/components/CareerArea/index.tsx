@@ -5,15 +5,46 @@ import styles from "./career.module.css";
 interface CareerCardProps {
   title: string;
   description: string;
-  index: number;
+  index?: number;
 }
 
-const CareerCard = ({ title, description, index }: CareerCardProps) => (
+const LinkedInLinkCard = ({ index = 0 }: { index: number }) => (
+  <motion.div
+    className={styles.card}
+    style={{ paddingTop: 10, paddingBottom: 10 }}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
+    transition={{
+      delay: index * 0.3,
+      type: "spring",
+      stiffness: 120,
+      mass: 3,
+    }}
+  >
+    <p className={styles.cardDescription}>
+      Find more detailed descriptions of these roles{" "}
+      <a
+        href="https://www.linkedin.com/in/elsea/"
+        target="_blank"
+        style={{
+          textDecoration: "underline",
+          textUnderlineOffset: 4,
+          cursor: "pointer",
+        }}
+      >
+        on LinkedIn
+      </a>
+    </p>
+  </motion.div>
+);
+
+const CareerCard = ({ title, description, index = 0 }: CareerCardProps) => (
   <motion.div
     className={styles.card}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: 20 }}
+    exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
     transition={{
       delay: index * 0.3,
       type: "spring",
@@ -26,42 +57,26 @@ const CareerCard = ({ title, description, index }: CareerCardProps) => (
   </motion.div>
 );
 
-const CareerArea = () => {
-  const careerData = [
-    {
-      title: "Senior Software Engineer @ PureCars",
-      description:
-        "Led development of key features in a fast-paced startup environment...",
-    },
-    {
-      title: "Software Developer @ LocalMed",
-      description:
-        "Architected and implemented scalable solutions across the stack...",
-    },
-    {
-      title: "Software Developer @ NewAperio",
-      description:
-        "Architected and implemented scalable solutions across the stack...",
-    },
-    {
-      title: "Full Stack Developer",
-      description:
-        "Architected and implemented scalable solutions across the stack...",
-    },
-    // Add more career items as needed
-  ];
+export interface CareerAreaProps {
+  data: CareerCardProps[];
+}
 
+const CareerArea = ({ data }: CareerAreaProps) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.cardsContainer}>
-        {careerData.map((career, index) => (
-          <CareerCard
-            key={index}
-            title={career.title}
-            description={career.description}
-            index={index}
-          />
-        ))}
+        {data.map((career, index) =>
+          career.title === "LinkedIn" ? (
+            <LinkedInLinkCard key={index} index={index} />
+          ) : (
+            <CareerCard
+              key={index}
+              title={career.title}
+              description={career.description}
+              index={index}
+            />
+          )
+        )}
       </div>
       <div className={styles.fadeOverlay} />
     </div>

@@ -18,43 +18,6 @@ const FlexRow: React.FC<FlexRowProps> = ({ children, height }) => {
     query: `(max-width: ${MOBILE_WIDTH}px)`,
   });
 
-  const [windowWidth, setWindowWidth] = useState(DESKTOP_WIDTH);
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const scale = useMemo(() => {
-    if (isDesktopOrLaptop) {
-      return 1;
-    }
-
-    if (!isDesktopOrLaptop && !isMobile) {
-      return windowWidth / DESKTOP_WIDTH;
-    }
-
-    return (windowWidth - 40) / MOBILE_WIDTH;
-  }, [isDesktopOrLaptop, windowWidth, isMobile]);
-
-  const calculatedHeight = useMemo(() => {
-    if (isDesktopOrLaptop || !isMobile) {
-      return height;
-    } else {
-      return height * 2 + GAP;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDesktopOrLaptop, height, scale, isMobile]);
-
   const calculatedWidth = useMemo(() => {
     if (isDesktopOrLaptop || !isMobile) {
       if (!isMobile) {
@@ -64,8 +27,7 @@ const FlexRow: React.FC<FlexRowProps> = ({ children, height }) => {
     } else {
       return MOBILE_WIDTH;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDesktopOrLaptop, scale, isMobile]);
+  }, [isDesktopOrLaptop, isMobile]);
 
   const styleVariables = {
     "--width": `${calculatedWidth}px`,
@@ -75,9 +37,6 @@ const FlexRow: React.FC<FlexRowProps> = ({ children, height }) => {
     <div
       className={styles["flex-row"]}
       style={{
-        // height: calculatedHeight,
-        // transform: `scale(${scale})`,
-        // transformOrigin: "top",
         ...styleVariables,
       }}
     >

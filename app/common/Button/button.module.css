@@ -10,7 +10,7 @@
   background: linear-gradient(to bottom right, #aabcff, #f1f5ff, #cdd7ff);
   box-sizing: border-box;
   transition: transform 0.2s ease-in-out;
-  cursor: pointer;
+  cursor: pointer !important;
   font-weight: 500;
   box-shadow:
     0px 5px 7px rgba(0, 29, 135, 0.2),
@@ -20,19 +20,19 @@
   &:hover {
     transform: scale(1.1);
   }
-  z-index: 900;
+
+  z-index: 9000;
 }
 
 .buttonText {
   position: relative;
   padding-bottom: 5px;
   text-wrap: nowrap;
-  z-index: 1600;
+  cursor: pointer !important;
 }
 
 .buttonText::before {
   transition: background 0.2s ease-in-out;
-  z-index: 1600;
   content: attr(data-text);
   position: absolute;
   left: 0;
@@ -44,11 +44,11 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: var(--buttonTextShadow);
+  cursor: pointer !important;
 }
 
 .buttonBackdrop {
   position: absolute;
-  z-index: 1000;
   top: 0;
   left: 0;
   width: 100%;
@@ -56,4 +56,5 @@
   border-radius: 10px;
   background: linear-gradient(to bottom, #9db2ff 0%, #6587ff 40%, #5b7aea 100%);
   box-shadow: inset 0px -6px 3px rgba(0, 29, 135, 0.2);
+  cursor: pointer !important;
 }

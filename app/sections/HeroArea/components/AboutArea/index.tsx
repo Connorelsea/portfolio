@@ -10,8 +10,6 @@ export interface AboutAreaProps {
 }
 
 const AboutArea = ({ selectedButton, setSelectedButton }: AboutAreaProps) => {
-  const { isLoaded, incrementImageCount } = useLoadTracker({ imageCount: 1 });
-
   return (
     <>
       <div className={styles.mainContainer}>
@@ -52,29 +50,6 @@ const AboutArea = ({ selectedButton, setSelectedButton }: AboutAreaProps) => {
           </div>
         </div>
       </div>
-      <motion.img
-        key="background-blur-about-section"
-        draggable={false}
-        src="https://utfs.io/f/IJo7F0AX1AKDIJB8cuZX1AKD9JsmLfHiqGx5FQwS24PzbYch"
-        alt="Background Blur Image"
-        height={500}
-        style={{
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          zIndex: 1001,
-        }}
-        onLoad={incrementImageCount}
-        initial={{
-          opacity: 0,
-        }}
-        animate={
-          isLoaded && {
-            opacity: 1,
-          }
-        }
-        transition={{ duration: 1.4, delay: 0 }}
-      />
     </>
   );
 };

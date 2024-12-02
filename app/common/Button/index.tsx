@@ -1,3 +1,5 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./button.module.css";
 import { Rubik } from "next/font/google";
