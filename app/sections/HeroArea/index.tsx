@@ -96,7 +96,7 @@ const HeroArea = () => {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ delay: 1.5, duration: 0.5 }}
         >
-          Featured below - detail shots from projects I've designed and
+          Featured below - detail shots from projects I&apos;ve designed and
           developed
         </motion.p>
       </FlexRow>
