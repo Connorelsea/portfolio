@@ -59,8 +59,8 @@ const Card: React.FC<CardProps> = ({
       style={styleVariables}
       initial={{
         opacity: 0,
-        scale: 0.8,
-        translateY: 200,
+        scale: 0.2,
+        translateY: 300,
       }}
       animate={{
         opacity: 1,
@@ -70,6 +70,7 @@ const Card: React.FC<CardProps> = ({
       transition={{
         stiffness: 70,
         mass: 1,
+        damping: 12,
         type: "spring",
         delay: adjustedOrder * 0.3,
       }}

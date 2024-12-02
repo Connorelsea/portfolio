@@ -39,7 +39,7 @@ const Pill = ({
         className={styles.pill}
         style={{
           zIndex: 9000 - order,
-          boxShadow: `0px ${5 + (10 - order) * 1}px ${10 + order * 0.3}px rgba(152, 170, 232, 0.3), inset 0px -6px 4px rgba(211, 221, 255, 0.7), inset 0 2px 2px rgba(255, 255, 255, 0.9)`,
+          boxShadow: `0px ${5 + (15 - order * 1.1) * 1}px ${15 + order * 0.3}px rgba(152, 170, 232, 0.5), inset 0px -6px 4px rgba(211, 221, 255, 0.7), inset 0 2px 2px rgba(255, 255, 255, 0.9)`,
         }}
         initial={{
           opacity: 0,
@@ -68,8 +68,9 @@ const Pill = ({
           rotateX: 100,
           rotateY: 20,
           transition: {
-            stiffness: 120,
-            type: "spring",
+            // stiffness: 120,
+            // type: "spring",
+            duration: 0.3,
             delay: 0.05 * order,
           },
         }}
@@ -85,7 +86,14 @@ const Pill = ({
         </p>
       </motion.div>
 
-      <Popup isVisible={isHovered} content={<div>{content[title]}</div>} />
+      <Popup
+        isVisible={isHovered}
+        content={
+          <div style={{ userSelect: "none", cursor: "auto" }}>
+            {content[title]}
+          </div>
+        }
+      />
     </>
   );
 };

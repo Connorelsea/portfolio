@@ -14,6 +14,7 @@
   justify-content: center;
   align-items: space-between;
   gap: var(--gap);
+  will-change: transform;
 
   @media (max-width: 700px) {
     width: 100%;
@@ -48,6 +49,7 @@
 
 .card-color-orange {
   background-color: #fef6f3;
+  background: linear-gradient(to bottom right, #fef6f3, #ffe4d2, #fef6f3);
   border: 1px solid #efd1c5;
   box-shadow:
     0 10px 40px 0 #ffd9ca,

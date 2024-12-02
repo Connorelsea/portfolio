@@ -65,6 +65,7 @@ const Popup = ({ isVisible, content }: PopupProps) => {
             top: `${position.top}px`,
             left: `${position.left}px`,
             zIndex: 9999,
+            willChange: "transform, opacity",
           }}
           key={"popup-" + content}
           initial={{

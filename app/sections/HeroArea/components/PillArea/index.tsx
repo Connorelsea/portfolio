@@ -5,7 +5,7 @@ import { useLoadTrackerWithUrls } from "@/app/hooks/useLoadTracker";
 const PillArea = () => {
   const { isLoaded, getImageRef, handleImageLoad } = useLoadTrackerWithUrls({
     urls: [
-      "https://utfs.io/f/IJo7F0AX1AKDvNYF2YhQOqZ0fAEJpMV2ewkuxB1U8GhRbltr",
+      "https://utfs.io/f/IJo7F0AX1AKDxu1VvPJzmQwP3CvkFcur8XeNjJDaIR4iT7pS",
     ],
   });
 
@@ -118,7 +118,7 @@ const PillArea = () => {
       <motion.img
         key="pill-area-background"
         draggable={false}
-        src="https://utfs.io/f/IJo7F0AX1AKDvNYF2YhQOqZ0fAEJpMV2ewkuxB1U8GhRbltr"
+        src="https://utfs.io/f/IJo7F0AX1AKDxu1VvPJzmQwP3CvkFcur8XeNjJDaIR4iT7pS"
         height={500}
         onLoad={handleImageLoad}
         ref={getImageRef(0)}
@@ -127,6 +127,7 @@ const PillArea = () => {
           top: 0,
           left: 50,
           zIndex: 1500,
+          willChange: "transform, opacity",
         }}
         initial={{
           opacity: 0,
@@ -135,8 +136,8 @@ const PillArea = () => {
         }}
         animate={
           isLoaded && {
-            opacity: 1,
-            transform: "scale(1)",
+            opacity: 0.65,
+            transform: "scale(1.2)",
             filter: "blur(0px)",
           }
         }
@@ -144,9 +145,9 @@ const PillArea = () => {
           opacity: 0,
           transform: "scale(0.4)",
           filter: "blur(20px)",
-          transition: { duration: 0.5 },
+          transition: { duration: 1, type: "tween" },
         }}
-        transition={{ duration: 3 }}
+        transition={{ duration: 2.5 }}
       />
     </motion.div>
   );

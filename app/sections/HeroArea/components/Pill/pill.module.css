@@ -9,6 +9,9 @@
   background: linear-gradient(to bottom right, #dae2ff, #f1f5ff, #dae2ff);
   box-sizing: border-box;
   transition: scale 0.3s ease-in-out;
+  will-change: transform, opacity;
+  user-select: none;
+  cursor: crosshair;
 
   &:hover {
     scale: 1.2;

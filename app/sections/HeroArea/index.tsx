@@ -6,8 +6,10 @@ import PillArea from "./components/PillArea";
 import AboutArea from "./components/AboutArea";
 import FlexRow from "@/app/common/FlexRow";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import CareerArea from "./components/CareerArea";
+
+import { Doto } from "next/font/google";
 
 const careerAreaData = [
   {
@@ -44,35 +46,61 @@ const portfolioAreaData = [
   },
 ];
 
+const doto = Doto({
+  subsets: ["latin"],
+  weight: ["600"],
+});
+
 const HeroArea = () => {
   const [selectedButton, setSelectedButton] = useState<string>("About Me");
 
   return (
-    <FlexRow>
-      <Card color={CardColor.DEEP_BLUE} width={40} order={0} height={390}>
-        <AboutArea
-          selectedButton={selectedButton}
-          setSelectedButton={setSelectedButton}
-        />
-      </Card>
-      <Card
-        color={CardColor.BLANK}
-        width={60}
-        overflow={true}
-        order={1}
-        height={390}
-      >
-        <AnimatePresence mode="wait">
-          {selectedButton === "About Me" && <PillArea key="pill-area" />}
-          {selectedButton === "Career" && (
-            <CareerArea key="career-area" data={careerAreaData} />
-          )}
-          {selectedButton === "Portfolio" && (
-            <CareerArea key="portfolio-area" data={portfolioAreaData} />
-          )}
-        </AnimatePresence>
-      </Card>
-    </FlexRow>
+    <>
+      <FlexRow>
+        <Card color={CardColor.DEEP_BLUE} width={40} order={0} height={390}>
+          <AboutArea
+            selectedButton={selectedButton}
+            setSelectedButton={setSelectedButton}
+          />
+        </Card>
+        <Card
+          color={CardColor.BLANK}
+          width={60}
+          overflow={true}
+          order={1}
+          height={390}
+        >
+          <AnimatePresence mode="wait">
+            {selectedButton === "About Me" && <PillArea key="pill-area" />}
+            {selectedButton === "Career" && (
+              <CareerArea key="career-area" data={careerAreaData} />
+            )}
+            {selectedButton === "Portfolio" && (
+              <CareerArea key="portfolio-area" data={portfolioAreaData} />
+            )}
+          </AnimatePresence>
+        </Card>
+      </FlexRow>
+      <FlexRow>
+        <motion.p
+          className={doto.className}
+          style={{
+            fontSize: "1.5rem",
+            color: "#092c9f",
+            width: "100%",
+            textAlign: "center",
+            willChange: "transform",
+          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ delay: 1.5, duration: 0.5 }}
+        >
+          Featured below - detail shots from projects I've designed and
+          developed
+        </motion.p>
+      </FlexRow>
+    </>
   );
 };
 
