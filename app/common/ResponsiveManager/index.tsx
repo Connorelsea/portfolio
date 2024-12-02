@@ -19,10 +19,10 @@ const ResponsiveManager = ({ children }: ResponsiveManagerProps) => {
   const isDesktop = useMediaQuery({
     minWidth: WIDTH_DESKTOP,
   });
-  const isTablet = useMediaQuery({
-    minWidth: WIDTH_TABLET,
-    maxWidth: WIDTH_DESKTOP,
-  });
+  // const isTablet = useMediaQuery({
+  //   minWidth: WIDTH_TABLET,
+  //   maxWidth: WIDTH_DESKTOP,
+  // });
   const isMobile = useMediaQuery({
     minWidth: WIDTH_MOBILE,
     maxWidth: WIDTH_TABLET,
