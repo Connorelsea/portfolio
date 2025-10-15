@@ -13,6 +13,24 @@ import { Doto } from "next/font/google";
 
 const careerAreaData = [
   {
+    title: "Job Title 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. ",
+  },
+  {
+    title: "Job Title 2",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. ",
+  },
+  {
+    title: "Job Title 3",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. Donec euismod.",
+  },
+];
+
+const careerAreaData2 = [
+  {
     title: "LinkedIn",
     description: "Find more detailed descriptions of these roles",
   },
@@ -73,7 +91,7 @@ const HeroArea = () => {
           <AnimatePresence mode="wait">
             {selectedButton === "About Me" && <PillArea key="pill-area" />}
             {selectedButton === "Career" && (
-              <CareerArea key="career-area" data={careerAreaData} />
+              <CareerArea key="career-area" data={careerAreaData2} />
             )}
             {selectedButton === "Portfolio" && (
               <CareerArea key="portfolio-area" data={portfolioAreaData} />

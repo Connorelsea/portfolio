@@ -68,8 +68,6 @@ const Pill = ({
           rotateX: 100,
           rotateY: 20,
           transition: {
-            // stiffness: 120,
-            // type: "spring",
             duration: 0.3,
             delay: 0.05 * order,
           },

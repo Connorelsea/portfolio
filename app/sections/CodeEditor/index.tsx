@@ -8,6 +8,7 @@ import { useLoadTrackerWithUrls } from "@/app/hooks/useLoadTracker";
 
 const CodeEditor = () => {
   const { isLoaded, getImageRef, handleImageLoad } = useLoadTrackerWithUrls({
+    sectionName: "codeEditor",
     urls: [
       "https://utfs.io/f/IJo7F0AX1AKD7fzXVjhBmtfMFuxwUW5R01ovYaby4X6TpJLQ",
       "https://utfs.io/f/IJo7F0AX1AKDkEYyz7ACKMU57T2bzdQjH90iAqIhGSJsPDcu",
@@ -26,9 +27,7 @@ const CodeEditor = () => {
   useEffect(() => {
     // ensure that first load of image (which is a bit after mounting) has the main extra delay
     // the extra delay is added to allow for attention on the first row animations
-    setTimeout(() => {
-      setHasMounted(true);
-    }, 1000);
+    setTimeout(() => setHasMounted(true), 1000);
   }, []);
 
   const extraDelay = hasMounted ? 0 : 3;
