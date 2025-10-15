@@ -11,23 +11,23 @@ import CareerArea from "./components/CareerArea";
 
 import { Doto } from "next/font/google";
 
-const careerAreaData = [
-  {
-    title: "Job Title 1",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. ",
-  },
-  {
-    title: "Job Title 2",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. ",
-  },
-  {
-    title: "Job Title 3",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. Donec euismod.",
-  },
-];
+// const careerAreaData = [
+//   {
+//     title: "Job Title 1",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. ",
+//   },
+//   {
+//     title: "Job Title 2",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. ",
+//   },
+//   {
+//     title: "Job Title 3",
+//     description:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl eget ultricies ultrices, nunc nisi tincidunt nisi, eu tincidunt purus purus id nisl. Donec euismod.",
+//   },
+// ];
 
 const careerAreaData2 = [
   {
@@ -67,6 +67,7 @@ const portfolioAreaData = [
 const doto = Doto({
   subsets: ["latin"],
   weight: ["600"],
+  adjustFontFallback: false,
 });
 
 const HeroArea = () => {
