@@ -6,13 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import FlexRow from "@/app/common/FlexRow";
 import ImagePreloadWrapper from "@/app/common/ImagePreloadWrapper";
 
-const BottomGlow = ({
-  startAnimations,
-  keyName,
-}: {
-  startAnimations: boolean;
-  keyName: string;
-}) => {
+const BottomGlow = ({ keyName }: { keyName: string }) => {
   return (
     <motion.img
       key={keyName}
@@ -193,14 +187,8 @@ const CodeEditor = () => {
           <AnimatePresence>
             {isSecondCardHovered && (
               <>
-                <BottomGlow
-                  startAnimations={startAnimations}
-                  keyName="bottom-glow-on-hover-1"
-                />
-                <BottomGlow
-                  startAnimations={startAnimations}
-                  keyName="bottom-glow-on-hover-2"
-                />
+                <BottomGlow keyName="bottom-glow-on-hover-1" />
+                <BottomGlow keyName="bottom-glow-on-hover-2" />
 
                 <motion.img
                   draggable={false}

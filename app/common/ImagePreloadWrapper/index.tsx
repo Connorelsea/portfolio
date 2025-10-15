@@ -16,7 +16,7 @@ const ImagePreloadWrapper: React.FC<ImagePreloadWrapperProps> = ({
   onLoadComplete,
 }) => {
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
-  const [loadedCount, setLoadedCount] = useState(0);
+  // const [loadedCount, setLoadedCount] = useState(0);
 
   useEffect(() => {
     // Get unique URLs to avoid loading duplicates
@@ -30,7 +30,7 @@ const ImagePreloadWrapper: React.FC<ImagePreloadWrapperProps> = ({
 
       img.onload = () => {
         loadedImages++;
-        setLoadedCount(loadedImages);
+        // setLoadedCount(loadedImages);
 
         if (loadedImages === uniqueUrls.length) {
           setAllImagesLoaded(true);
@@ -41,7 +41,7 @@ const ImagePreloadWrapper: React.FC<ImagePreloadWrapperProps> = ({
       img.onerror = () => {
         console.warn(`Failed to load image: ${url}`);
         loadedImages++;
-        setLoadedCount(loadedImages);
+        // setLoadedCount(loadedImages);
 
         if (loadedImages === uniqueUrls.length) {
           setAllImagesLoaded(true);
