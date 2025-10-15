@@ -21,6 +21,7 @@ export interface CardProps {
   flex?: "row" | "column";
   gap?: number;
   fullWidth?: boolean;
+  shouldAnimate?: boolean;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -35,6 +36,7 @@ const Card: React.FC<CardProps> = ({
   onMouseEnter,
   onMouseLeave,
   fullWidth = false,
+  shouldAnimate = true,
 }) => {
   const cardClasses = [
     styles.card,
@@ -51,8 +53,6 @@ const Card: React.FC<CardProps> = ({
     "--gap": `${gap}px`,
   } as React.CSSProperties;
 
-  const adjustedOrder = order >= 4 ? order + 3 : order;
-
   return (
     <motion.div
       className={cardClasses}
@@ -62,17 +62,25 @@ const Card: React.FC<CardProps> = ({
         scale: 0.2,
         translateY: 300,
       }}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        translateY: 0,
-      }}
+      animate={
+        shouldAnimate
+          ? {
+              opacity: 1,
+              scale: 1,
+              translateY: 0,
+            }
+          : {
+              opacity: 0,
+              scale: 0.2,
+              translateY: 300,
+            }
+      }
       transition={{
         stiffness: 70,
         mass: 1,
         damping: 12,
         type: "spring",
-        delay: adjustedOrder * 0.3,
+        delay: (order || 0) * 0.15, // Stagger within row only
       }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

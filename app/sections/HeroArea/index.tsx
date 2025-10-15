@@ -76,7 +76,13 @@ const HeroArea = () => {
   return (
     <>
       <FlexRow>
-        <Card color={CardColor.DEEP_BLUE} width={40} order={0} height={390}>
+        <Card
+          color={CardColor.DEEP_BLUE}
+          width={40}
+          order={0}
+          height={390}
+          shouldAnimate={true}
+        >
           <AboutArea
             selectedButton={selectedButton}
             setSelectedButton={setSelectedButton}
@@ -88,6 +94,7 @@ const HeroArea = () => {
           overflow={true}
           order={1}
           height={390}
+          shouldAnimate={true}
         >
           <AnimatePresence mode="wait">
             {selectedButton === "About Me" && <PillArea key="pill-area" />}
