@@ -11,7 +11,7 @@ const imagesMap = {
   formWhole:
     "https://42n8qyxrei.ufs.sh/f/IJo7F0AX1AKDhHlpn5ubrHUiIpXxLGWPB71mKgdATN85c69w",
   formWholeNew:
-    "https://42n8qyxrei.ufs.sh/f/IJo7F0AX1AKDRACOvFBDHQbyvixh0wzXOq54PT7MLNE8ZJSK",
+    "https://42n8qyxrei.ufs.sh/f/IJo7F0AX1AKD3On7tlgV2ap6m5fZODSI7iye9wTjWuNEXHgz",
   formMenu:
     "https://42n8qyxrei.ufs.sh/f/IJo7F0AX1AKD5RpdEw0fqLwGPtRU0hAKjd1ry5WXs4HubD8k",
   formButtonMain:
@@ -83,8 +83,8 @@ const FormPet = () => {
             animate={
               startAnimations
                 ? {
-                    y: isFormWholeHovered ? -140 : -130,
-                    x: isFormWholeHovered ? -250 : 320,
+                    y: isFormWholeHovered ? -110 : -130,
+                    x: isFormWholeHovered ? -260 : 320,
                     rotateX: isFormWholeHovered ? 35 : 0,
                     opacity: 1,
                     scale: isFormWholeHovered ? 1.2 : 1,

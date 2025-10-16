@@ -8,6 +8,7 @@ import ResponsiveManager from "./common/ResponsiveManager";
 import SectionAgentArt from "./sections/SectionAgentArt";
 import AnimatedRow from "./common/AnimatedRow";
 import FormPet from "./sections/FormPet";
+import HomeGenFirstRow from "./sections/HomeGen/FirstRow";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -35,8 +36,22 @@ export default function Home() {
         </AnimatedRow>
 
         {/* Time-based: renders after delay */}
-        <AnimatedRow triggerType="time" delay={1900} minHeight={600}>
+        <AnimatedRow
+          triggerType="scroll"
+          delay={1900}
+          minHeight={600}
+          threshold={0.5}
+        >
           <SectionAgentArt />
+        </AnimatedRow>
+
+        <AnimatedRow
+          triggerType="scroll"
+          delay={2500}
+          minHeight={400}
+          threshold={0.5}
+        >
+          <HomeGenFirstRow />
         </AnimatedRow>
 
         {/* OR Scroll-based: wait for delay, then trigger when scrolled into view */}

@@ -8,6 +8,7 @@ export enum CardColor {
   DEEP_BLUE = "deep-blue",
   ORANGE = "orange",
   LIGHT_BLUE = "light-blue",
+  DEEP_PURPLE = "deep-purple",
 }
 
 export interface CardProps {
