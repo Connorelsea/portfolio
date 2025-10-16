@@ -33,25 +33,49 @@
 
 .card-color-dark {
   background-color: #3d3d3d;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   box-shadow:
-    0 10px 30px 0 rgba(40, 200, 64, 0.4),
-    0 4px 10px 0 rgba(0, 0, 0, 0.3);
+    0 10px 40px 0 rgba(40, 200, 64, 0.4),
+    0 4px 10px 0 rgba(0, 0, 0, 0.3),
+    inset 0 4px 2px rgba(216, 255, 206, 0.2),
+    inset 0 -10px 20px rgba(51, 255, 0, 0.1);
 }
 
 .card-color-deep-blue {
   background-color: #92adff;
-  border: 1px solid #919dc8;
+  background: linear-gradient(
+    135deg,
+    #dde5ff 0%,
+    #8ba5ff 25%,
+    #688afe 50%,
+    #7a9bff 75%,
+    #dde5ff 100%
+  );
+  /* border: 1px solid #919dc8; */
   box-shadow:
-    0 10px 30px 0 #d9dafe,
-    0 4px 10px 0 rgba(0, 0, 0, 0.3);
+    0 10px 40px 0 #8ba5ff,
+    0 4px 10px 0 rgba(0, 0, 0, 0.3),
+    inset 0 4px 2px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 2px rgba(104, 138, 254, 0.3);
 }
 
 .card-color-orange {
   background-color: #fef6f3;
   background: linear-gradient(to bottom right, #fef6f3, #ffe4d2, #fef6f3);
-  border: 1px solid #efd1c5;
+  /* border: 1px solid #efd1c5; */
   box-shadow:
     0 10px 40px 0 #ffd9ca,
-    0 4px 3px 0 rgba(0, 0, 0, 0.1);
+    0 4px 3px 0 rgba(0, 0, 0, 0.1),
+    inset 0 4px 2px rgba(255, 255, 255, 0.4),
+    inset 0 -4px 2px rgba(255, 140, 9, 0.1);
+}
+
+.card-color-light-blue {
+  background-color: #f9fdff;
+  background: linear-gradient(to bottom right, #f9fdff, #d3ebff, #f9fdff);
+  box-shadow:
+    0 10px 40px 0 #d3ebff,
+    0 4px 3px 0 rgba(0, 0, 0, 0.1),
+    inset 0 4px 2px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 2px rgba(211, 235, 255, 0.3);
 }

@@ -7,6 +7,7 @@ import CodeEditor from "./sections/CodeEditor";
 import ResponsiveManager from "./common/ResponsiveManager";
 import SectionAgentArt from "./sections/SectionAgentArt";
 import AnimatedRow from "./common/AnimatedRow";
+import FormPet from "./sections/FormPet";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -29,8 +30,12 @@ export default function Home() {
           <CodeEditor />
         </AnimatedRow>
 
+        <AnimatedRow triggerType="time" delay={1300} minHeight={600}>
+          <FormPet />
+        </AnimatedRow>
+
         {/* Time-based: renders after delay */}
-        <AnimatedRow triggerType="time" delay={1500} minHeight={600}>
+        <AnimatedRow triggerType="time" delay={1900} minHeight={600}>
           <SectionAgentArt />
         </AnimatedRow>
 
